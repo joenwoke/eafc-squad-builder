@@ -1,0 +1,36 @@
+.site-header {
+  background-color: #111;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+.main-content {
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #111;
+  color: white;
+}
