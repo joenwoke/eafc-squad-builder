@@ -28,3 +28,20 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.2rem;
+  background-color: #0369a1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
