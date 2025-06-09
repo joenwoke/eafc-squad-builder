@@ -69,3 +69,13 @@
 .build-btn-wrapper {
   margin-top: 2rem;
 }
+
+.build-btn {
+  background-color: #0369a1;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
