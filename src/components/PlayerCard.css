@@ -24,22 +24,21 @@
   margin-bottom: 0.5rem;
 }
 
-.rating {
-  background: gold;
-  color: black;
-  padding: 3px 6px;
+.badge {
+  padding: 4px 8px;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
+  color: white;
+}
+
+.rating {
+  background-color: gold;
+  color: black;
 }
 
 .position {
-  background: #00bcd4;
-  color: white;
-  padding: 3px 6px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  background-color: #00bcd4;
 }
 
 .player-image {
