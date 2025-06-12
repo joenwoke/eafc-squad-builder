@@ -32,7 +32,8 @@
 
 .player-name {
   font-size: 1rem;
-  margin: 0.25rem 0;
+  font-weight: 700;
+  margin: 0.5rem 0 0.3rem;
 }
 
 .club,
