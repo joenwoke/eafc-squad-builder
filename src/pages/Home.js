@@ -1,5 +1,6 @@
 import React from 'react';
-import './Home.css'; 
+import './Home.css';
+import PlayerCard from '../components/PlayerCard';
 
 const Home = () => {
   return (
@@ -7,7 +8,11 @@ const Home = () => {
       <h1>EAFC Squad Builder</h1>
 
       <div className="search-section">
-        <input type="text" placeholder="Search players" className="search-input" />
+        <input
+          type="text"
+          placeholder="Search players"
+          className="search-input"
+        />
         <button className="search-button">🔍</button>
       </div>
 
@@ -18,9 +23,9 @@ const Home = () => {
       </div>
 
       <div className="player-grid">
-        <div className="player-card">Player 1</div>
-        <div className="player-card">Player 2</div>
-        <div className="player-card">Player 3</div>
+        <PlayerCard name="Player 1" />
+        <PlayerCard name="Player 2" />
+        <PlayerCard name="Player 3" />
       </div>
 
       <div className="build-btn-wrapper">
