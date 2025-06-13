@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import PlayerCard from '../components/PlayerCard';
 
@@ -54,34 +54,86 @@ const players = [
 ];
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilter, setActiveFilter] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value.toLowerCase());
+  };
+
+  const handleFilter = (type) => {
+    setActiveFilter(type === activeFilter ? '' : type);
+  };
+
+  const filteredPlayers = players.filter((player) => {
+    const searchMatch = player.name.toLowerCase().includes(searchTerm);
+    if (!activeFilter) return searchMatch;
+
+    switch (activeFilter) {
+      case 'League':
+        return searchMatch && player.club.toLowerCase().includes(searchTerm);
+      case 'Nation':
+        return searchMatch && player.nation.toLowerCase().includes(searchTerm);
+      case 'Club':
+        return searchMatch && player.club.toLowerCase().includes(searchTerm);
+      default:
+        return searchMatch;
+    }
+  });
+
   return (
     <div className="home-container">
       <h1>EAFC Squad Builder</h1>
 
       <div className="search-section">
-        <input type="text" placeholder="Search players" className="search-input" />
+        <input
+          type="text"
+          placeholder="Search players"
+          className="search-input"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
         <button className="search-button">🔍</button>
       </div>
 
       <div className="filters">
-        <button className="filter-btn">League</button>
-        <button className="filter-btn">Nation</button>
-        <button className="filter-btn">Club</button>
+        <button
+          className={`filter-btn ${activeFilter === 'League' ? 'active' : ''}`}
+          onClick={() => handleFilter('League')}
+        >
+          League
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === 'Nation' ? 'active' : ''}`}
+          onClick={() => handleFilter('Nation')}
+        >
+          Nation
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === 'Club' ? 'active' : ''}`}
+          onClick={() => handleFilter('Club')}
+        >
+          Club
+        </button>
       </div>
 
       <div className="player-grid">
-        {players.map((player, index) => (
-          <PlayerCard
-            key={index}
-            name={player.name}
-            rating={player.rating}
-            position={player.position}
-            club={player.club}
-            nation={player.nation}
-            image={player.image}
-            stats={player.stats}
-          />
-        ))}
+        {filteredPlayers.length > 0 ? (
+          filteredPlayers.map((player, index) => (
+            <PlayerCard
+              key={index}
+              name={player.name}
+              rating={player.rating}
+              position={player.position}
+              club={player.club}
+              nation={player.nation}
+              image={player.image}
+              stats={player.stats}
+            />
+          ))
+        ) : (
+          <p>No players match your search.</p>
+        )}
       </div>
 
       <div className="build-btn-wrapper">
