@@ -10,6 +10,14 @@ const players = [
     club: 'Paris SG',
     nation: 'France',
     image: 'https://cdn.sofifa.net/players/231/747/24_60.png',
+    stats: {
+      PAC: 97,
+      SHO: 90,
+      PAS: 82,
+      DRI: 92,
+      DEF: 36,
+      PHY: 78,
+    },
   },
   {
     name: 'Kevin De Bruyne',
@@ -18,6 +26,14 @@ const players = [
     club: 'Manchester City',
     nation: 'Belgium',
     image: 'https://cdn.sofifa.net/players/192/985/24_60.png',
+    stats: {
+      PAC: 76,
+      SHO: 86,
+      PAS: 93,
+      DRI: 88,
+      DEF: 64,
+      PHY: 78,
+    },
   },
   {
     name: 'Virgil van Dijk',
@@ -26,6 +42,14 @@ const players = [
     club: 'Liverpool',
     nation: 'Netherlands',
     image: 'https://cdn.sofifa.net/players/203/376/24_60.png',
+    stats: {
+      PAC: 71,
+      SHO: 60,
+      PAS: 71,
+      DRI: 72,
+      DEF: 91,
+      PHY: 86,
+    },
   },
 ];
 
@@ -55,6 +79,7 @@ const Home = () => {
             club={player.club}
             nation={player.nation}
             image={player.image}
+            stats={player.stats}
           />
         ))}
       </div>
