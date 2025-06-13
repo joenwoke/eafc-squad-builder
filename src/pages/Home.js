@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Home.css';
 import PlayerCard from '../components/PlayerCard';
 
-const initialPlayers = [
+const players = [
   {
     name: 'Kylian Mbappé',
     rating: 91,
@@ -10,7 +10,9 @@ const initialPlayers = [
     club: 'Paris SG',
     nation: 'France',
     image: 'https://cdn.sofifa.net/players/231/747/24_60.png',
-    stats: { PAC: 97, SHO: 90, PAS: 82, DRI: 92, DEF: 36, PHY: 78 },
+    stats: {
+      PAC: 97, SHO: 90, PAS: 82, DRI: 92, DEF: 36, PHY: 78,
+    },
   },
   {
     name: 'Kevin De Bruyne',
@@ -19,7 +21,9 @@ const initialPlayers = [
     club: 'Manchester City',
     nation: 'Belgium',
     image: 'https://cdn.sofifa.net/players/192/985/24_60.png',
-    stats: { PAC: 76, SHO: 86, PAS: 93, DRI: 88, DEF: 64, PHY: 78 },
+    stats: {
+      PAC: 76, SHO: 86, PAS: 93, DRI: 88, DEF: 64, PHY: 78,
+    },
   },
   {
     name: 'Virgil van Dijk',
@@ -28,26 +32,43 @@ const initialPlayers = [
     club: 'Liverpool',
     nation: 'Netherlands',
     image: 'https://cdn.sofifa.net/players/203/376/24_60.png',
-    stats: { PAC: 71, SHO: 60, PAS: 71, DRI: 72, DEF: 91, PHY: 86 },
+    stats: {
+      PAC: 71, SHO: 60, PAS: 71, DRI: 72, DEF: 91, PHY: 86,
+    },
   },
 ];
 
 const Home = () => {
-  const [players] = useState(initialPlayers);
+  const [searchTerm, setSearchTerm] = useState('');
   const [squad, setSquad] = useState([]);
 
-  const handleAddToSquad = (player) => {
-    if (!squad.some(p => p.name === player.name)) {
-      setSquad([...squad, player]);
-    }
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value.toLowerCase());
   };
+
+  const addToSquad = (player) => {
+    if (squad.find(p => p.name === player.name)) return;
+    setSquad([...squad, player]);
+  };
+
+  const filteredPlayers = players.filter(player =>
+    player.name.toLowerCase().includes(searchTerm) ||
+    player.club.toLowerCase().includes(searchTerm) ||
+    player.nation.toLowerCase().includes(searchTerm)
+  );
 
   return (
     <div className="home-container">
       <h1>EAFC Squad Builder</h1>
 
       <div className="search-section">
-        <input type="text" placeholder="Search players" className="search-input" />
+        <input
+          type="text"
+          placeholder="Search players"
+          className="search-input"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
         <button className="search-button">🔍</button>
       </div>
 
@@ -57,35 +78,12 @@ const Home = () => {
         <button className="filter-btn">Club</button>
       </div>
 
-      <h2>Available Players</h2>
       <div className="player-grid">
-        {players.map((player, index) => (
+        {filteredPlayers.map((player, index) => (
           <PlayerCard
             key={index}
-            name={player.name}
-            rating={player.rating}
-            position={player.position}
-            club={player.club}
-            nation={player.nation}
-            image={player.image}
-            stats={player.stats}
-            onClick={() => handleAddToSquad(player)}
-          />
-        ))}
-      </div>
-
-      <h2>Selected Squad</h2>
-      <div className="player-grid">
-        {squad.map((player, index) => (
-          <PlayerCard
-            key={index}
-            name={player.name}
-            rating={player.rating}
-            position={player.position}
-            club={player.club}
-            nation={player.nation}
-            image={player.image}
-            stats={player.stats}
+            {...player}
+            onClick={() => addToSquad(player)}
           />
         ))}
       </div>
@@ -93,6 +91,17 @@ const Home = () => {
       <div className="build-btn-wrapper">
         <button className="build-btn">Build Squad</button>
       </div>
+
+      {squad.length > 0 && (
+        <div className="squad-section">
+          <h2>Your Squad</h2>
+          <div className="player-grid">
+            {squad.map((player, index) => (
+              <PlayerCard key={index} {...player} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
