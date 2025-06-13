@@ -8,10 +8,11 @@ const PlayerCard = ({
   club,
   nation,
   image,
-  stats = { PAC: 90, SHO: 85, PAS: 80, DRI: 88, DEF: 70, PHY: 75 }
+  stats = { PAC: 90, SHO: 85, PAS: 80, DRI: 88, DEF: 70, PHY: 75 },
+  onClick
 }) => {
   return (
-    <div className="player-card">
+    <div className="player-card" onClick={onClick} style={{ cursor: 'pointer' }}>
       <div className="player-header">
         <div className="badge rating">{rating}</div>
         <div className="badge position">{position}</div>
