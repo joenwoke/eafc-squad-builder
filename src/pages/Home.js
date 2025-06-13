@@ -21,7 +21,7 @@ const players = [
   },
   {
     name: 'Kevin De Bruyne',
-    rating: 91,
+    rating: 90,
     position: 'CM',
     club: 'Manchester City',
     nation: 'Belgium',
