@@ -106,3 +106,15 @@
 .remove-btn:hover {
   background-color: #b30000;
 }
+
+.added-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #00c853;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
