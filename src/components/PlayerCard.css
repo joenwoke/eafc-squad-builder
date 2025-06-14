@@ -90,3 +90,15 @@
   background: rgba(255, 255, 255, 0.06);
   border-radius: 4px;
 }
+
+.remove-btn {
+  margin-top: 0.7rem;
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
