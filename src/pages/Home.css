@@ -95,3 +95,10 @@
   margin-bottom: 1rem;
   color: #00bcd4;
 }
+
+.squad-section .player-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
