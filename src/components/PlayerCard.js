@@ -9,10 +9,15 @@ const PlayerCard = ({
   nation,
   image,
   stats = { PAC: 90, SHO: 85, PAS: 80, DRI: 88, DEF: 70, PHY: 75 },
-  onClick
+  onClick,
+  onRemove
 }) => {
   return (
-    <div className="player-card" onClick={onClick} style={{ cursor: 'pointer' }}>
+    <div
+      className="player-card"
+      onClick={onClick}
+      style={{ cursor: onClick ? 'pointer' : 'default' }}
+    >
       <div className="player-header">
         <div className="badge rating">{rating}</div>
         <div className="badge position">{position}</div>
@@ -32,6 +37,18 @@ const PlayerCard = ({
         <div><strong>DEF</strong> {stats.DEF}</div>
         <div><strong>PHY</strong> {stats.PHY}</div>
       </div>
+
+      {onRemove && (
+        <button
+          className="remove-btn"
+          onClick={(e) => {
+            e.stopPropagation(); // prevent triggering onClick
+            onRemove();
+          }}
+        >
+          Remove
+        </button>
+      )}
     </div>
   );
 };
