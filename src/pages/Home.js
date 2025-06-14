@@ -89,6 +89,7 @@ const Home = () => {
             key={index}
             {...player}
             onClick={() => addToSquad(player)}
+            isInSquad={!!squad.find(p => p.name === player.name)}
           />
         ))}
       </div>
