@@ -51,6 +51,11 @@ const Home = () => {
     setSquad([...squad, player]);
   };
 
+  const removeFromSquad = (playerToRemove) => {
+    const updatedSquad = squad.filter(player => player.name !== playerToRemove.name);
+    setSquad(updatedSquad);
+  };
+
   const filteredPlayers = players.filter(player =>
     player.name.toLowerCase().includes(searchTerm) ||
     player.club.toLowerCase().includes(searchTerm) ||
@@ -97,7 +102,11 @@ const Home = () => {
           <h2>Your Squad</h2>
           <div className="player-grid">
             {squad.map((player, index) => (
-              <PlayerCard key={index} {...player} />
+              <PlayerCard
+                key={index}
+                {...player}
+                onRemove={() => removeFromSquad(player)}
+              />
             ))}
           </div>
         </div>
