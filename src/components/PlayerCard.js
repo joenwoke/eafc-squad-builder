@@ -10,7 +10,8 @@ const PlayerCard = ({
   image,
   stats = { PAC: 90, SHO: 85, PAS: 80, DRI: 88, DEF: 70, PHY: 75 },
   onClick,
-  onRemove
+  onRemove,
+  isInSquad = false
 }) => {
   return (
     <div
@@ -18,6 +19,9 @@ const PlayerCard = ({
       onClick={onClick}
       style={{ cursor: onClick ? 'pointer' : 'default' }}
     >
+      {/* ✔ ADDED Tag if in squad */}
+      {isInSquad && <div className="added-tag">✔ Added</div>}
+
       <div className="player-header">
         <div className="badge rating">{rating}</div>
         <div className="badge position">{position}</div>
@@ -42,7 +46,7 @@ const PlayerCard = ({
         <button
           className="remove-btn"
           onClick={(e) => {
-            e.stopPropagation(); // prevent triggering onClick
+            e.stopPropagation(); // Prevent triggering onClick (add to squad)
             onRemove();
           }}
         >
