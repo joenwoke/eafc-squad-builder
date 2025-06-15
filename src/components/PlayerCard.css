@@ -114,7 +114,7 @@
 
 /* Remove Button (Only for Squad Section) */
 .remove-btn {
-  margin-top: auto;
+  margin-top: 0.2rem;
   background-color: crimson;
   color: white;
   border: none;
